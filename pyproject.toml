@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "test-math-api"
+version = "0.1.0"
+description = "Test task for QA on testing the API for mathematical operations."
+authors = ["Artiom Cozlovici <artiom.cozlovici@deeplace.md>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.1.1"
+djangorestframework = "^3.15.2"
+drf-standardized-errors = "^0.14.1"
+drf-spectacular = "^0.27.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
