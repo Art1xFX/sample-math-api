@@ -112,7 +112,18 @@ REST_FRAMEWORK = {
 # drf-spectacular settings
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Math Operations API',
-    'DESCRIPTION': 'API for basic mathematical operations: log, sqrt, power, and factorial.',
+    'DESCRIPTION': (
+        "This API provides various mathematical operations including logarithms, "
+        "square roots (supporting complex numbers), powers, and factorials. "
+        "It allows developers to easily integrate these mathematical operations "
+        "into their applications via simple HTTP POST requests."
+        "\n\n**Key Features:**\n"
+        "- **Logarithms:** Compute the logarithm of a given number with a specified base.\n"
+        "- **Square Roots:** Compute the square root of a real or complex number.\n"
+        "- **Powers:** Raise a base number to a specific exponent.\n"
+        "- **Factorials:** Compute the factorial of a non-negative integer."
+        "\n\nAll operations expect a JSON request body and return results in JSON format."
+    ),
     'VERSION': '0.1.0',
     "ENUM_NAME_OVERRIDES": {
         "ValidationErrorEnum": "drf_standardized_errors.openapi_serializers.ValidationErrorEnum.choices",
