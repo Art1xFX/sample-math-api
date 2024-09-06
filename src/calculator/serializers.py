@@ -1,5 +1,6 @@
 from rest_framework import serializers
 import math
+import cmath
 
 class LogarithmSerializer(serializers.Serializer):
     base = serializers.FloatField(min_value=0.0001, write_only=True, required=True)
@@ -14,12 +15,17 @@ class LogarithmSerializer(serializers.Serializer):
 
 
 class SquareRootSerializer(serializers.Serializer):
-    value = serializers.FloatField(min_value=0, write_only=True, required=True)
-    result = serializers.FloatField(read_only=True)
+    value = serializers.FloatField(write_only=True, required=True)
+    result = serializers.SerializerMethodField()
+
+    def get_result(self, obj):
+        value = obj['value']
+        result = cmath.sqrt(value)
+        if result.imag == 0:
+            return result.real
+        return str(result).replace('j', 'i')
 
     def create(self, validated_data):
-        value = validated_data['value']
-        validated_data['result'] = math.sqrt(value)
         return validated_data
 
 
