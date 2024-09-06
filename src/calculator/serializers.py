@@ -1,6 +1,8 @@
+from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 import math
 import cmath
+
 
 class LogarithmSerializer(serializers.Serializer):
     base = serializers.FloatField(
@@ -38,6 +40,7 @@ class SquareRootSerializer(serializers.Serializer):
         help_text="Result of the square root operation. Can be real (number) or complex (string)."
     )
 
+    @extend_schema_field(serializers.CharField())
     def get_result(self, obj):
         value = obj['value']
         result = cmath.sqrt(value)
