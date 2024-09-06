@@ -10,15 +10,16 @@ from .serializers import LogarithmSerializer, SquareRootSerializer, PowerSeriali
 )
 class LogarithmView(APIView):
     @extend_schema(
-        request=LogarithmSerializer,
-        responses={
-            200: LogarithmSerializer
-        },
+        summary="Compute Logarithm",
         description=(
             "This endpoint computes the logarithm of a given value with a specified base. "
             "Both the `base` and `value` must be greater than 0. The result will be returned "
             "as a floating-point number."
         ),
+        request=LogarithmSerializer,
+        responses={
+            200: LogarithmSerializer
+        },
         examples=[
             OpenApiExample(
                 "Logarithm example",
@@ -51,10 +52,7 @@ class LogarithmView(APIView):
 )
 class SquareRootView(APIView):
     @extend_schema(
-        request=SquareRootSerializer,
-        responses={
-            200: SquareRootSerializer
-            },
+        summary="Compute Square Root",
         description=(
             "This endpoint computes the square root of a given number. "
             "It supports both real and complex numbers. If the input is a negative "
@@ -62,6 +60,10 @@ class SquareRootView(APIView):
             "with 'i' instead of Python's default 'j'. If the result is a real number, "
             "it will be returned as a floating-point number."
         ),
+        request=SquareRootSerializer,
+        responses={
+            200: SquareRootSerializer
+        },
         examples=[
             OpenApiExample(
                 "Real number example",
@@ -109,14 +111,15 @@ class SquareRootView(APIView):
 )
 class PowerView(APIView):
     @extend_schema(
-        request=PowerSerializer,
-        responses={
-            200: PowerSerializer,
-        },
+        summary="Compute Power",
         description=(
             "This endpoint computes the power of a given base raised to a specified exponent. "
             "Both `base` and `exp` can be any real numbers. The result is returned as a floating-point number."
         ),
+        request=PowerSerializer,
+        responses={
+            200: PowerSerializer,
+        },
         examples=[
             OpenApiExample(
                 "Power example",
@@ -149,14 +152,15 @@ class PowerView(APIView):
 )
 class FactorialView(APIView):
     @extend_schema(
-        request=FactorialSerializer,
-        responses={
-            200: FactorialSerializer,
-        },
+        summary="Compute Factorial",
         description=(
             "This endpoint computes the factorial of a given integer value. "
             "`value` must be a non-negative integer. The result is returned as an integer."
         ),
+        request=FactorialSerializer,
+        responses={
+            200: FactorialSerializer,
+        },
         examples=[
             OpenApiExample(
                 "Factorial example",
