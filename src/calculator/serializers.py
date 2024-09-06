@@ -3,9 +3,23 @@ import math
 import cmath
 
 class LogarithmSerializer(serializers.Serializer):
-    base = serializers.FloatField(min_value=0.0001, write_only=True, required=True)
-    value = serializers.FloatField(min_value=0.0001, write_only=True, required=True)
-    result = serializers.FloatField(read_only=True)
+    base = serializers.FloatField(
+        min_value=0.0001,
+        write_only=True,
+        required=True,
+        help_text="Base of the logarithm, must be a positive number greater than 0."
+    )
+    value = serializers.FloatField(
+        min_value=0.0001,
+        write_only=True,
+        required=True,
+        help_text="Value for which the logarithm will be calculated, must be a positive number greater than 0."
+    )
+    result = serializers.FloatField(
+        read_only=True,
+        help_text="Result of the logarithm operation."
+    )
+
 
     def create(self, validated_data):
         base = validated_data['base']
@@ -15,8 +29,14 @@ class LogarithmSerializer(serializers.Serializer):
 
 
 class SquareRootSerializer(serializers.Serializer):
-    value = serializers.FloatField(write_only=True, required=True)
-    result = serializers.SerializerMethodField()
+    value = serializers.FloatField(
+        write_only=True,
+        required=True,
+        help_text="Number for which the square root will be calculated. It can be a negative number for complex results."
+    )
+    result = serializers.SerializerMethodField(
+        help_text="Result of the square root operation. Can be real (number) or complex (string)."
+    )
 
     def get_result(self, obj):
         value = obj['value']
@@ -30,9 +50,20 @@ class SquareRootSerializer(serializers.Serializer):
 
 
 class PowerSerializer(serializers.Serializer):
-    base = serializers.FloatField(write_only=True, required=True)
-    exp = serializers.FloatField(write_only=True, required=True)
-    result = serializers.FloatField(read_only=True)
+    base = serializers.FloatField(
+        write_only=True,
+        required=True,
+        help_text="Base number to be raised to the power."
+    )
+    exp = serializers.FloatField(
+        write_only=True,
+        required=True,
+        help_text="Exponent to which the base will be raised."
+    )
+    result = serializers.FloatField(
+        read_only=True,
+        help_text="Result of the power operation."
+    )
 
     def create(self, validated_data):
         base = validated_data['base']
@@ -42,8 +73,16 @@ class PowerSerializer(serializers.Serializer):
 
 
 class FactorialSerializer(serializers.Serializer):
-    value = serializers.IntegerField(min_value=0, write_only=True, required=True)
-    result = serializers.IntegerField(read_only=True)
+    value = serializers.IntegerField(
+        min_value=0,
+        write_only=True,
+        required=True,
+        help_text="Non-negative integer value for which the factorial will be calculated.",
+    )
+    result = serializers.IntegerField(
+        read_only=True,
+        help_text="Result of the factorial operation.",
+    )
 
     def create(self, validated_data):
         value = validated_data['value']
