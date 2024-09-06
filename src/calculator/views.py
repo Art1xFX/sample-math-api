@@ -1,9 +1,7 @@
-import math
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.exceptions import ValidationError
-from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import extend_schema, OpenApiExample
 from .serializers import LogarithmSerializer, SquareRootSerializer, PowerSerializer, FactorialSerializer
 
 
@@ -13,7 +11,33 @@ from .serializers import LogarithmSerializer, SquareRootSerializer, PowerSeriali
 class LogarithmView(APIView):
     @extend_schema(
         request=LogarithmSerializer,
-        responses={200: LogarithmSerializer}
+        responses={
+            200: LogarithmSerializer
+        },
+        description=(
+            "This endpoint computes the logarithm of a given value with a specified base. "
+            "Both the `base` and `value` must be greater than 0. The result will be returned "
+            "as a floating-point number."
+        ),
+        examples=[
+            OpenApiExample(
+                "Logarithm example",
+                value={
+                    "base": 2,
+                    "value": 8
+                },
+                request_only=True,
+                description="This example demonstrates how to compute the logarithm of 8 with base 2.",
+            ),
+            OpenApiExample(
+                "Logarithm response",
+                value={
+                    "result": 3.0
+                },
+                response_only=True,
+                description="The response for the logarithm of 8 with base 2.",
+            ),
+        ]
     )
     def post(self, request):
         serializer = LogarithmSerializer(data=request.data)
@@ -28,7 +52,50 @@ class LogarithmView(APIView):
 class SquareRootView(APIView):
     @extend_schema(
         request=SquareRootSerializer,
-        responses={200: SquareRootSerializer}
+        responses={
+            200: SquareRootSerializer
+            },
+        description=(
+            "This endpoint computes the square root of a given number. "
+            "It supports both real and complex numbers. If the input is a negative "
+            "number, the result will be a complex number represented as a string "
+            "with 'i' instead of Python's default 'j'. If the result is a real number, "
+            "it will be returned as a floating-point number."
+        ),
+        examples=[
+            OpenApiExample(
+                "Real number example",
+                value={
+                    "value": 16
+                },
+                request_only=True,
+                description="This example demonstrates how to compute the square root of a positive real number.",
+            ),
+            OpenApiExample(
+                "Complex number example",
+                value={
+                    "value": -16
+                },
+                request_only=True,
+                description="This example demonstrates how to compute the square root of a negative number, returning a complex result.",
+            ),
+            OpenApiExample(
+                "Real number response",
+                value={
+                    "result": 4.0
+                },
+                response_only=True,
+                description="The response for a real number (e.g., square root of 16).",
+            ),
+            OpenApiExample(
+                "Complex number response",
+                value={
+                    "result": "4i"
+                },
+                response_only=True,
+                description="The response for a complex number (e.g., square root of -16).",
+            ),
+        ]
     )
     def post(self, request):
         serializer = SquareRootSerializer(data=request.data)
@@ -43,7 +110,32 @@ class SquareRootView(APIView):
 class PowerView(APIView):
     @extend_schema(
         request=PowerSerializer,
-        responses={200: PowerSerializer}
+        responses={
+            200: PowerSerializer,
+        },
+        description=(
+            "This endpoint computes the power of a given base raised to a specified exponent. "
+            "Both `base` and `exp` can be any real numbers. The result is returned as a floating-point number."
+        ),
+        examples=[
+            OpenApiExample(
+                "Power example",
+                value={
+                    "base": 2,
+                    "exp": 3
+                },
+                request_only=True,
+                description="This example demonstrates how to compute 2 raised to the power of 3.",
+            ),
+            OpenApiExample(
+                "Power response",
+                value={
+                    "result": 8.0
+                },
+                response_only=True,
+                description="The response for 2 raised to the power of 3.",
+            ),
+        ]
     )
     def post(self, request):
         serializer = PowerSerializer(data=request.data)
@@ -58,7 +150,31 @@ class PowerView(APIView):
 class FactorialView(APIView):
     @extend_schema(
         request=FactorialSerializer,
-        responses={200: FactorialSerializer}
+        responses={
+            200: FactorialSerializer,
+        },
+        description=(
+            "This endpoint computes the factorial of a given integer value. "
+            "`value` must be a non-negative integer. The result is returned as an integer."
+        ),
+        examples=[
+            OpenApiExample(
+                "Factorial example",
+                value={
+                    "value": 5
+                },
+                request_only=True,
+                description="This example demonstrates how to compute the factorial of 5.",
+            ),
+            OpenApiExample(
+                "Factorial response",
+                value={
+                    "result": 120
+                },
+                response_only=True,
+                description="The response for the factorial of 5.",
+            ),
+        ]
     )
     def post(self, request):
         serializer = FactorialSerializer(data=request.data)
