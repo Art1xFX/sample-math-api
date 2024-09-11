@@ -50,7 +50,7 @@ The project is set up with [SQLite](https://www.sqlite.org/index.html) as the de
 
 ## Documentation
 
-This project uses [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html) the [**OpenAPI Specification (OAS)**](https://swagger.io/specification/) for generating API documentation. The documentation allows you to understand the structure and behavior of the API, including available endpoints and their input/output formats.
+This project uses [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html) and the [**OpenAPI Specification (OAS)**](https://swagger.io/specification/) for generating API documentation. The documentation allows you to understand the structure and behavior of the API, including available endpoints and their input/output formats.
 
 - To download the latest `openapi.json` file (which contains the full API schema in JSON format), visit the following URL:
     ```
