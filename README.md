@@ -2,6 +2,10 @@
 
 This project implements a REST API for basic mathematical operations (logarithm, root, power, and factorial) using [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/). Below are the steps to get the project up and running.
 
+## Purpose
+
+This project serves as a **test task** for QA engineers. It is designed to help them test API endpoints, validate error handling, and explore API documentation generated with the [OpenAPI Specification (OAS)](https://swagger.io/specification/).
+
 The project is set up with [SQLite](https://www.sqlite.org/index.html) as the default database for development purposes, which provides a simple, file-based solution with no need for complex database setup.
 
 ## Requirements
@@ -50,7 +54,7 @@ The project is set up with [SQLite](https://www.sqlite.org/index.html) as the de
 
 ## Documentation
 
-This project uses [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html) and the [**OpenAPI Specification (OAS)**](https://swagger.io/specification/) for generating API documentation. The documentation allows you to understand the structure and behavior of the API, including available endpoints and their input/output formats.
+This project uses [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html) and the [OpenAPI Specification (OAS)](https://swagger.io/specification/) for generating API documentation. The documentation allows you to understand the structure and behavior of the API, including available endpoints and their input/output formats.
 
 - To download the latest `openapi.json` file (which contains the full API schema in JSON format), visit the following URL:
     ```
