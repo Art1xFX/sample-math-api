@@ -111,7 +111,7 @@ REST_FRAMEWORK = {
 
 # drf-spectacular settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Math Operations API',
+    'TITLE': 'Sample Math API',
     'DESCRIPTION': (
         "This API provides various mathematical operations including logarithms, "
         "square roots (supporting complex numbers), powers, and factorials. "

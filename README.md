@@ -1,4 +1,4 @@
-# Test Math API
+# Sample Math API
 
 This project implements a REST API for basic mathematical operations (logarithm, root, power, and factorial) using [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/). Below are the steps to get the project up and running.
 
