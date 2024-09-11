@@ -35,6 +35,12 @@ The project is set up with [SQLite](https://www.sqlite.org/index.html) as the de
     poetry run python src/manage.py createsuperuser
     ```
     - This command creates an admin user who can access the Django admin panel. It will prompt you for a username, email, and password. You need to create this user only once to gain access to administrative features.
+    - The Django admin page can be accessed by visiting the following URL:
+        ```
+        /admin/
+        ```
+
+        - This page provides a user-friendly interface for managing the application's data and performing administrative tasks. You can log in using the superuser credentials created in step 4 of the installation process.
 
 5. **Activate the virtual environment and run the development server**:
     ```bash
