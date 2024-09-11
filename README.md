@@ -13,7 +13,7 @@ The project is set up with [SQLite](https://www.sqlite.org/index.html) as the de
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/Art1xFX/test-math-api.git
+    git clone https://github.com/Deeplace/sample-math-api
     cd test-math-api
     ```
     - This command downloads the project files from GitHub to your local machine and navigates into the project folder. You only need to do this once to get the source code.
